@@ -32,4 +32,9 @@ public class StudentController {
         return studentService.searchStudentList(gender);
     }
 
+    @GetMapping("/students/{id}")
+    public List<Student> searchAStudentById(@PathVariable int id){
+        return studentService.searchAStudentListById(id);
+    }
+
 }

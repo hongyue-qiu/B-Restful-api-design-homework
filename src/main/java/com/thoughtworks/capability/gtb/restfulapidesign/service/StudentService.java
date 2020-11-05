@@ -22,19 +22,27 @@ public class StudentService {
     }
 
     public List<Student> deleteStudentById(int id){
-        List<Student> studentList = studentLists.stream()
+        List<Student> studentListTemp = studentLists.stream()
                 .filter(stu -> !stu.getId().equals(id)).collect(Collectors.toList());
-        studentLists = studentList;
+        studentLists = studentListTemp;
         return studentLists;
     }
 
     public List<Student> searchStudentList(String gender){
+        List<Student> studentList;
         if(gender!=null){
-            List<Student> studentList = studentLists.stream()
-                    .filter(stu -> !stu.getGender().equals(gender)).collect(Collectors.toList());
-            studentLists = studentList;
+            studentList = studentLists.stream()
+                    .filter(stu -> stu.getGender().equals(gender)).collect(Collectors.toList());
+        }else {
+            studentList = studentLists;
         }
-        return studentLists;
+        return studentList;
+    }
+
+    public List<Student> searchAStudentListById(int id){
+        List<Student> studentListTemp = studentLists.stream()
+                .filter(stu -> stu.getId().equals(id)).collect(Collectors.toList());
+        return studentListTemp;
     }
 
 }
