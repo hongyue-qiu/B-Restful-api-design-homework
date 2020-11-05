@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -17,6 +18,13 @@ public class StudentService {
 
     public List<Student> addNewStudent(Student student){
         studentLists.add(student);
+        return studentLists;
+    }
+
+    public List<Student> deleteStudentById(int id){
+        List<Student> studentList = studentLists.stream()
+                .filter(stu ->stu.getId().equals(id)).collect(Collectors.toList());
+        studentLists = studentList;
         return studentLists;
     }
 
