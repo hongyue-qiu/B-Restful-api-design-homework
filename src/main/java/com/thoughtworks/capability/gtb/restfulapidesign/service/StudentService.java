@@ -23,8 +23,17 @@ public class StudentService {
 
     public List<Student> deleteStudentById(int id){
         List<Student> studentList = studentLists.stream()
-                .filter(stu ->stu.getId().equals(id)).collect(Collectors.toList());
+                .filter(stu -> !stu.getId().equals(id)).collect(Collectors.toList());
         studentLists = studentList;
+        return studentLists;
+    }
+
+    public List<Student> searchStudentList(String gender){
+        if(gender!=null){
+            List<Student> studentList = studentLists.stream()
+                    .filter(stu -> !stu.getGender().equals(gender)).collect(Collectors.toList());
+            studentLists = studentList;
+        }
         return studentLists;
     }
 

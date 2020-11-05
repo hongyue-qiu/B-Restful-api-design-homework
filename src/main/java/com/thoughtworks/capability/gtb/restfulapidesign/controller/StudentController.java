@@ -27,4 +27,9 @@ public class StudentController {
         return studentService.deleteStudentById(id);
     }
 
+    @GetMapping("/students")
+    public List<Student> searchStudent(@RequestParam(required = false) String gender){
+        return studentService.searchStudentList(gender);
+    }
+
 }
