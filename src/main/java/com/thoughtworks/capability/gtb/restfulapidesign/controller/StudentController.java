@@ -37,4 +37,10 @@ public class StudentController {
         return studentService.searchAStudentListById(id);
     }
 
+    @PutMapping("/students/{id}")
+    public List<Student> updateStudentInformationById(@PathVariable int id,
+                                                      @RequestBody Student student){
+        return studentService.updateStudentListById(id,student);
+    }
+
 }
