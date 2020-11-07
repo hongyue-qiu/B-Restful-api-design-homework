@@ -34,7 +34,7 @@ public class StudentService {
             studentListTemp = studentLists.stream()
                     .filter(stu -> stu.getGender().equals(gender)).collect(Collectors.toList());
         }else {
-            studentListTemp = studentLists;
+            studentListTemp = new ArrayList<>(studentLists);
         }
         return studentListTemp;
     }
