@@ -17,10 +17,10 @@ public class StudentService {
         studentLists.add(new Student(4, "zz","male","q"));
         studentLists.add(new Student(5, "aa","male","h"));
         studentLists.add(new Student(6, "qq","male","y"));
-//        studentLists.add(new Student(7, "kk","male","k"));
-//        studentLists.add(new Student(8, "aa","male","h"));
-//        studentLists.add(new Student(9, "qq","male","y"));
-//        studentLists.add(new Student(10, "kk","male","k"));
+        studentLists.add(new Student(7, "kk","male","k"));
+        studentLists.add(new Student(8, "aa","male","h"));
+        studentLists.add(new Student(9, "qq","male","y"));
+        studentLists.add(new Student(10, "kk","male","k"));
     }
 
     public List<Student> addNewStudent(Student student){

@@ -4,9 +4,11 @@ import com.thoughtworks.capability.gtb.restfulapidesign.dto.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.dto.StudentGroup;
 import org.springframework.stereotype.Service;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentGroupService {
@@ -48,5 +50,15 @@ public class StudentGroupService {
         return studentGroupLists;
     }
 
+    public List<StudentGroup> updateGroupName(int id, StudentGroup group){
+        studentGroupLists = studentGroupLists.stream().map(studentGroup -> {
+            if(studentGroup.getId().equals(id)) studentGroup.setName(group.getName());
+            return studentGroup;
+        }).collect(Collectors.toList());
+        return studentGroupLists;
+    }
 
+    public List<StudentGroup> getStudentGroupLists() {
+        return studentGroupLists;
+    }
 }
