@@ -10,6 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentGroup {
-    private int id;
+    private Integer id;
     private List<Student> studentGroupsList;
 }

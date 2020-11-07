@@ -20,23 +20,30 @@ public class StudentGroupService {
         List<Student> studentList = studentService.searchStudentList(null);
         int studentNum = studentList.size()/6;
         int redundant = studentList.size()%6;
+        int redundantTemp = redundant;
         Collections.shuffle(studentList);
-        StudentGroup studentGroup = new StudentGroup();
-        studentGroup.setId(1);
-        studentGroup.setStudentGroupsList(studentList.subList(0,studentNum-1));
+
         for (int i = 0; i < 6; i++) {
+            StudentGroup studentGroup = new StudentGroup();
             studentGroup.setId(i+1);
             //0-4 5-9
-            //0*stu-stu+pre-1 1*stu-stu+pre-1
-            studentGroup.setStudentGroupsList(studentList.subList(i*studentNum,i*studentNum+studentNum-1));
+            //i*studentNum   i*studentNum+studentNum
+            int begin = i*studentNum;
+            int end = i*studentNum+studentNum;
+            if(redundantTemp > 0){
+                end=end+studentNum+i;
+                begin = begin+i;
+                redundantTemp--;
+            }
+            if (redundantTemp == 0 && begin != 0 && redundant != 0){
+                begin = i*studentNum+redundant-1;
+                end = begin+studentNum;
+            }
+
+            List<Student> studentList1 = studentList.subList(begin,end);
+            studentGroup.setStudentGroupsList(studentList1);
             studentGroupLists.add(studentGroup);
         }
-
-        for (int i = 0; i < redundant; i++) {
-            Student studentTemp = studentList.subList(6*studentNum,studentList.size()-1).get(i);
-            studentGroupLists.get(i).getStudentGroupsList().add(studentTemp);
-        }
-
 
         return studentGroupLists;
     }
