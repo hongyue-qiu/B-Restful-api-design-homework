@@ -12,4 +12,6 @@ import java.util.List;
 public class StudentGroup {
     private Integer id;
     private List<Student> studentGroupsList;
+    private String name;
+    private String note;
 }
