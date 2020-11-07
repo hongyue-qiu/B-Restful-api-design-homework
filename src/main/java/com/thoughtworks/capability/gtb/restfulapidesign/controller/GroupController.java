@@ -15,7 +15,7 @@ public class GroupController {
         this.studentGroupService = studentGroupService;
     }
 
-    @GetMapping("/groups")
+    @GetMapping("/grouping")
     @ResponseStatus(HttpStatus.OK)
     public List<StudentGroup> randomGroupOfStudents(){
         return studentGroupService.randomGroupingOfStudents();
@@ -25,5 +25,12 @@ public class GroupController {
     public List<StudentGroup> updateGroupName(@PathVariable int id, @RequestBody StudentGroup group){
         return studentGroupService.updateGroupName(id,group);
     }
+
+    @GetMapping("/groups")
+    public List<StudentGroup> getAllGroups(){
+        return studentGroupService.getStudentGroupLists();
+    }
+
+
 
 }
